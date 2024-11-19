@@ -71,6 +71,7 @@ I used a kind of hexagonal architecture using isolated features
 
 ## Demo
 
+![](https://github.com/mariolugo/real-time-board/blob/main/demo.gif)
 
 ## Tech Stack + Features
 
