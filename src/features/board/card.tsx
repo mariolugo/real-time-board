@@ -47,8 +47,6 @@ export function Card({
     [task.id, task.column, isEditing]
   );
 
-  console.log({ task });
-
   return (
     <CardComponent
       ref={drag}
@@ -57,21 +55,24 @@ export function Card({
         ${isEditing ? 'ring-2 ring-blue-400' : ''} 
         ${isDragging ? 'opacity-50' : ''}`}
     >
-      <CardHeader className="flex">
-        {task.title}{' '}
-        {isEditing && (
-          <div
-            className="w-3 h-3 rounded-full border border-solid border-black"
-            style={{
-              backgroundColor: color,
-            }}
-          />
-        )}
+      <CardHeader>
+        <div className="flex items-center gap-2">
+          <p>{task.title} </p>
+          {isEditing && (
+            <div
+              className="w-3 h-3 rounded-full border border-solid border-black"
+              style={{
+                backgroundColor: color,
+              }}
+            />
+          )}
+        </div>
       </CardHeader>
       <CardContent className="flex">
         <div className="flex flex-col gap-2">
           <Label>Change name</Label>
           <Input
+            name="task-name"
             className="w-full border rounded px-2 py-1"
             defaultValue={task.title}
             value={task.title}
@@ -86,6 +87,7 @@ export function Card({
           />
           <Button
             className="mt-4  px-4 py-2 rounded"
+            data-testid="delete-task"
             onClick={() => handleDeleteTask(task.id)}
           >
             Delete

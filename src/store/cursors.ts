@@ -1,7 +1,7 @@
 import { CursorPosition } from '@/features/cursor/cursor';
 import { create } from 'zustand';
 
-interface CursorStore {
+export interface CursorStore {
   cursors: Map<string, CursorPosition>;
   setCursors: (cursors: Map<string, CursorPosition>) => void;
 }

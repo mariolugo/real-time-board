@@ -1,50 +1,113 @@
-# React + TypeScript + Vite
+# Real Time Board ⚛️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This real time board enables collaboration between users in real time
 
-Currently, two official plugins are available:
+## Installation
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Prerequisites:
 
-## Expanding the ESLint configuration
+1) Node >= 20
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Steps
+1. Clone the repository:
+```bash
+ git clone https://github.com/mariolugo/real-time-board.git
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+2. Install dependencies 
+```bash
+npm install
+```
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Usage
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+npm run dev
+```
+
+This will use `concurrently` to run the websockets service and the react application.
+
+##  File Structure
+I used a kind of hexagonal architecture using isolated features
+
+```
+├── e2e
+│   ├── tests
+│   │   └── board.spec.ts
+├── server
+│   └── index.js
+├── src
+│   ├── components
+│   │   ├── ui (shadcn components)
+│   │   ├── app-sidebar.tsx
+│   │   ├── header.tsx
+│   │   └── layout.tsx
+│   ├── context
+│   │   └── SockersProvider.tsx
+│   ├── features
+│   │   ├── board
+│   │   │   ├── board.tsx
+│   │   │   ├── card.tsx
+│   │   │   └── column.tsx
+│   │   └── cursor
+│   │       └── cursor.tsx
+│   └── hooks
+│   │   └── use-mobile.ts
+│   └── lib
+│   │   └── utils.ts
+│   ├── store
+│   │   ├── cursors.tsx
+│   │   └── users.ts
+|   ├── index.css
+|   ├── main.tsx
+|   └── App.tsx
+├── vite.config.ts
+├── playwright.config.ts
+├── package.json
+├── tailwind.config.cjs
+└── tsconfig.json
+```
+
+## Demo
+
+
+## Tech Stack + Features
+
+### Libraries
+
+- [Vite](https://vite.dev/) – Vite is a blazing fast frontend build tool powering the next generation of web applications.
+- [Socket.io](https://socket.io/) – Bidirectional and low-latency communication for every platform
+- [Zustand](https://github.com/pmndrs/zustand) – 
+A small, fast and scalable bearbones state-management solution using simplified flux principles. Has a comfy API based on hooks, isn't boilerplatey or opinionated.
+
+### UI
+
+- [Tailwind CSS](https://tailwindcss.com/) – Utility-first CSS framework for rapid UI development
+- [Shadcn/ui](https://ui.shadcn.com/) – Re-usable components built using Radix UI and Tailwind CSS
+- [React DnD](https://react-dnd.github.io/react-dnd/about) – 
+React DnD is a set of React utilities to help you build complex drag and drop interfaces while keeping your components decoupled. 
+
+### Code Quality
+
+- [TypeScript](https://www.typescriptlang.org/) – Static type checker for end-to-end typesafety
+- [ESLint](https://eslint.org/) – Pluggable linter for Next.js and TypeScript
+
+### Testing
+- [Playwright](https://playwright.dev/) – Playwright enables reliable end-to-end testing for modern web apps.
+
+### Server
+- [Express](https://expressjs.com/) – Fast, unopinionated, minimalist web framework for Node.js
+
+## How to test
+
+1) Install playwright
+```bash
+npx playwright install
+```
+2) Close server if it's open.
+
+3) Run rests:
+```bash
+npm run test
 ```

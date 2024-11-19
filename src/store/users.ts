@@ -5,7 +5,7 @@ export interface Client {
   color: string;
 }
 
-interface UsersState {
+export interface UsersState {
   currentUser: Client | null;
   connectedUsers: Client[];
   setUsers: (users: Client[]) => void;

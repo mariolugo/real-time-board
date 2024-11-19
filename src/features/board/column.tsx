@@ -43,8 +43,8 @@ export function Column({
       <h2 className="font-bold mb-4">{title}</h2>
       <div
         ref={drop}
-        className={`bg-accent min-h-[400px] transition-colors p-2 ${
-          isOver ? 'bg-accent-foreground/20' : ''
+        className={`bg-muted min-h-[400px] transition-colors p-2 ${
+          isOver ? 'bg-muted-foreground/20' : ''
         }`}
       >
         {tasks

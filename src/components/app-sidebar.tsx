@@ -20,14 +20,14 @@ export function AppSidebar() {
       <SidebarHeader />
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Connected users</SidebarGroupLabel>
+          <SidebarGroupLabel data-testid="connected-users">Connected users</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {connectedUsers.map((user) => (
                 <SidebarMenuItem key={user.name}>
                   <SidebarMenuButton asChild>
                     <div className="flex">
-                      <p>{user.name}</p>
+                      <p data-testid={user.name}>{user.name}</p>
                       <div
                         className="w-3 h-3 rounded-full border-solid border border-black"
                         style={{ backgroundColor: user.color }}

@@ -11,7 +11,7 @@ const app = express();
 const server = createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: "*",
     methods: ["GET", "POST"]
   }
 });
@@ -58,7 +58,6 @@ io.on('connection', (socket) => {
 
   socket.on('updateTaskName', ({ taskId, title }) => {
     const task = tasks.get(taskId);
-    console.log('task', taskId);
     if (task) {
       task.title = title;
       tasks.set(taskId, task);
