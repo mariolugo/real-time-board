@@ -69,6 +69,12 @@ I used a kind of hexagonal architecture using isolated features
 └── tsconfig.json
 ```
 
+## Explanation of solution
+
+I have good experience with socket io, I created a simple socket service with expressjs that could handle the real time between my application. I also used zustand to handle the global state and share it between components, for example, with the board and sidebar for connected users. I created a context provider for web sockets and exposed a hook to the main socket instance, this could help me reutilize the hook and socket client across the application without creating additional socket instances. On every re-render I clean the socket connection using "off", instead of "disconnect" because I dont want the socket client to be disconnected, I just want to turn off the listeners and then turning them on again on the next render. For this architecture, I wanted to separate the features with a kind of hexagonal architecture, where for every feature I could put hooks, components, utils that are going to be shared with that feature.
+
+For the testing, I decided to integrate end to end tests. I think this kind of application is better tested with e2e. The library I chose was playwright.
+
 ## Demo
 
 ![](https://github.com/mariolugo/real-time-board/blob/main/demo.gif)
