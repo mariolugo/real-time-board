@@ -15,7 +15,12 @@ Prerequisites:
  git clone https://github.com/mariolugo/real-time-board.git
 ```
 
-2. Install dependencies 
+2. Navigate to repository
+```bash
+ cd real-time-board
+```
+
+3. Install dependencies 
 ```bash
 npm install
 ```
