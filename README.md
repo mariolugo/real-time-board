@@ -41,7 +41,6 @@ I used a kind of hexagonal architecture using isolated features
 │   ├── components
 │   │   ├── ui (shadcn components)
 │   │   ├── app-sidebar.tsx
-│   │   ├── header.tsx
 │   │   └── layout.tsx
 │   ├── context
 │   │   └── SockersProvider.tsx
